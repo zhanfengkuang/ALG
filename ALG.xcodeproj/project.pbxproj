@@ -32,7 +32,8 @@
 		D09544512694736A0097F630 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0954458269473B40097F630 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		D095445C2695A0FA0097F630 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		D095445F2695A5410097F630 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		D09544622696CC4F0097F630 /* Test.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Test.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		D09544642696CCF30097F630 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +78,8 @@
 				D095444C2694736A0097F630 /* Assets.xcassets */,
 				D095444E2694736A0097F630 /* LaunchScreen.storyboard */,
 				D09544512694736A0097F630 /* Info.plist */,
-				D095445F2695A5410097F630 /* MyPlayground.playground */,
+				D09544642696CCF30097F630 /* MyPlayground.playground */,
+				D09544622696CC4F0097F630 /* Test.playground */,
 			);
 			path = ALG;
 			sourceTree = "<group>";

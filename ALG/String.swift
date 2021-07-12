@@ -7,6 +7,47 @@
 
 import Foundation
 
+// MARK: - 验证回文字符串
+/*
+给你一个字符串 s，请你将 s 分割成一些子串，使每个子串都是 回文串 。返回 s 所有可能的分割方案。
+回文串 是正着读和反着读都一样的字符串。
+input："A man, a plan, a canal: Panama"
+output: true
+*/
+/*
+思路：采用头和尾双指针
+*/
+func isPalindrome(_ s: String) -> Bool {
+	if s.count == 1 || s.count == 0 { return true }
+	var front = 0, tail = s.count - 1, result = false
+	while front < tail {
+		let frontC = s[s.index(s.startIndex, offsetBy: front)],
+			tailC = s[s.index(s.startIndex, offsetBy: tail)]
+		if !frontC.isLetter && !frontC.isNumber {
+			front += 1
+			if front == tail {
+				result = true; break
+			}
+			continue
+		}
+		if !tailC.isLetter && !tailC.isNumber {
+			tail -= 1
+			if front == tail {
+				result = true; break
+			}
+			continue
+		}
+		if frontC.lowercased() == tailC.lowercased() {
+			tail -= 1
+			front += 1
+			result = true
+		} else {
+			result = false; break
+		}
+	}
+	return result
+}
+
 // MARK: - 分割回文串
 /*
 给你一个字符串 s，请你将 s 分割成一些子串，使每个子串都是 回文串 。返回 s 所有可能的分割方案。
@@ -249,7 +290,6 @@ func firstUniqChar(_ s: String) -> Int {
 输出：["h","a","n","n","a","H"]
 链接：https://leetcode-cn.com/leetbook/read/top-interview-questions/xapbdt/
 */
-
 func reverseString(_ s: inout [Character]) {
 	
 }
