@@ -252,7 +252,20 @@ class Solution {
 链接：https://leetcode-cn.com/problems/valid-anagram/solution/you-xiao-de-zi-mu-yi-wei-ci-by-leetcode-solution/
 */
 func isAnagram(_ s: String, _ t: String) -> Bool {
-	return false
+	if s.isEmpty && !t.isEmpty { return false }
+	var SC: [Character: Int] = [ : ]
+	s.forEach { c in
+		SC[c] = (SC[c] ?? 0) + 1
+	}
+	t.forEach { c in
+		SC[c] = (SC[c] ?? 0) - 1
+	}
+	for item in SC {
+		if item.value != 0 {
+			return false
+		}
+	}
+	return true
 }
 
 // MARK: - 字符串中的第一个唯一字符
