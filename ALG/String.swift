@@ -230,29 +230,11 @@ func wordBreak(_ s: String, _ wordDict: [String]) -> [String] {
 链接：https://leetcode-cn.com/leetbook/read/top-interview-questions/xar9lv/
 哈希表 字符串 排序
 从另一个角度考虑，tt 是 ss 的异位词等价于「两个字符串中字符出现的种类和次数均相等」。由于字符串只包含 2626 个小写字母，因此我们可以维护一个长度为 2626 的频次数组 \textit{table}table，先遍历记录字符串 ss 中字符出现的频次，然后遍历字符串 tt，减去 \textit{table}table 中对应的频次，如果出现 \textit{table}[i]<0table[i]<0，则说明 tt 包含一个不在 ss 中的额外字符，返回 \text{false}false 即可。
-
-class Solution {
-	public boolean isAnagram(String s, String t) {
-		if (s.length() != t.length()) {
-			return false;
-		}
-		int[] table = new int[26];
-		for (int i = 0; i < s.length(); i++) {
-			table[s.charAt(i) - 'a']++;
-		}
-		for (int i = 0; i < t.length(); i++) {
-			table[t.charAt(i) - 'a']--;
-			if (table[t.charAt(i) - 'a'] < 0) {
-				return false;
-			}
-		}
-		return true;
-	}
-}
 链接：https://leetcode-cn.com/problems/valid-anagram/solution/you-xiao-de-zi-mu-yi-wei-ci-by-leetcode-solution/
 */
 func isAnagram(_ s: String, _ t: String) -> Bool {
 	if s.isEmpty && !t.isEmpty { return false }
+	// s字符串 Key: 字符，Value: 出现次数
 	var SC: [Character: Int] = [ : ]
 	s.forEach { c in
 		SC[c] = (SC[c] ?? 0) + 1
@@ -273,27 +255,31 @@ func isAnagram(_ s: String, _ t: String) -> Bool {
 给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。
 s = "leetcode"
 返回 0
-
 s = "loveleetcode"
 返回 2
 链接：https://leetcode-cn.com/leetbook/read/top-interview-questions/xaph0j/
 你可以假定该字符串只包含小写字母。
-
 我们可以对字符串进行两次遍历。
-
 在第一次遍历时，我们使用哈希映射统计出字符串中每个字符出现的次数。在第二次遍历时，我们只要遍历到了一个只出现一次的字符，那么就返回它的索引，否则在遍历结束后返回 -1−1。
 */
 
 func firstUniqChar(_ s: String) -> Int {
-	return 1
+	var countMap: [Character: Int] = [ : ]
+	s.forEach { c in
+		countMap[c] = (countMap[c] ?? 0) + 1
+	}
+	for (index, c) in s.enumerated() {
+		if (countMap[c] == 1) {
+			return index
+		}
+	}
+	return -1
 }
 
 // MARK: - 反转字符串
 /*
 编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。
-
 不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。
-
 你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。
 示例 1：
 输入：["h","e","l","l","o"]
@@ -304,5 +290,11 @@ func firstUniqChar(_ s: String) -> Int {
 链接：https://leetcode-cn.com/leetbook/read/top-interview-questions/xapbdt/
 */
 func reverseString(_ s: inout [Character]) {
-	
+	guard s.count > 1 else { return }
+	var front = 0, tail = s.count - 1
+	while front < tail {
+		s.swapAt(front, tail)
+		front += 1
+		tail -= 1
+	}
 }
