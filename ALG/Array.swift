@@ -7,6 +7,25 @@
 
 import Foundation
 
+// MARK: - 乘积最大子数组（动态规划）
+/*
+[2, 3, -2, 4] 6
+[-2, 0, -1] 0
+*/
+func maxProduct(_ nums: [Int]) -> Int {
+	var maxValue = Int.min, imax = 1, imin = 1
+	nums.forEach { value in
+		if (value < 0) {
+			swap(&imax, &imin)
+		}
+		imax = max(imax * value, value)
+		imin = min(imin * value, value)
+		maxValue = max(maxValue, imax)
+	}
+	return maxValue
+}
+
+
 // MARK: - 只出现一次的数字
 /*给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素*/
 /* input: [1, 1, 2, 3, 3], output: 2*/
