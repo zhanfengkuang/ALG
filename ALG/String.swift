@@ -143,16 +143,35 @@ func partition(_ s: String) -> [[String]] {
 */
 /*
 
-初始化 dp=[False,\cdots,False]dp=[False,⋯,False]，长度为 n+1n+1。nn 为字符串长度。dp[i]dp[i] 表示 ss 的前 ii 位是否可以用 wordDictwordDict 中的单词表示。
-初始化 dp[0]=Truedp[0]=True，空字符可以被表示。
-遍历字符串的所有子串，遍历开始索引 ii，遍历区间 [0,n)[0,n)：
-遍历结束索引 jj，遍历区间 [i+1,n+1)[i+1,n+1)：
-若 dp[i]=Truedp[i]=True 且 s[i,\cdots,j)s[i,⋯,j) 在 wordlistwordlist 中：dp[j]=Truedp[j]=True。解释：dp[i]=Truedp[i]=True 说明 ss 的前 ii 位可以用 wordDictwordDict 表示，则 s[i,\cdots,j)s[i,⋯,j) 出现在 wordDictwordDict 中，说明 ss 的前 jj 位可以表示。
-返回 dp[n]dp[n]
+初始化 dp=[False,⋯,False]，长度为 n+1。n 为字符串长度。dp[i] 表示 s 的前 i 位是否可以用 wordDict 中的单词表示。
+初始化 dp[0]=True，空字符可以被表示。
+遍历字符串的所有子串，遍历开始索引 i，遍历区间 [0,n)：
+遍历结束索引 j，遍历区间 [i+1,n+1)：
+若 dp[i]=True 且 s[i,⋯,j) 在 wordlist 中：dp[j]=True。解释：dp[i]=True 说明 s 的前 i 位可以用 wordDict 表示，则 s[i,⋯,j) 出现在 wordDict 中，说明 s 的前 j 位可以表示。
+返回 dp[n]
 https://leetcode-cn.com/problems/word-break/solution/dong-tai-gui-hua-ji-yi-hua-hui-su-zhu-xing-jie-shi/
 */
 func wordBreak(_ s: String, _ wordDict: [String]) -> Bool {
-	return true
+	let words = Set(wordDict)
+	let n = s.count
+	var dp = Array<Bool>(repeating: false, count: n + 1)
+	dp[0] = true
+	(1...n).forEach { i in
+		(0..<i).forEach { j in
+			let startIndex = s.index(s.startIndex, offsetBy: j)
+			let endIndex = s.index(s.startIndex, offsetBy: i - 1)
+			let word = String(s[startIndex...endIndex])
+			// 判断0..<j个字符串 是否为全部包含字符串，再判断j..<i字符串是否包含
+			// 这样就判断出0..<i 字符串是否全是单词
+			// 比如s = "apppenapp", wordDict = ["app", "pen"]
+			// 当i = 6，j = 3时, dp[3] = true, word = "pen", 因为app是单词, pen也是单词，所以0..<i 字符串全是单词
+			if (dp[j] && words.contains(word)) {
+				dp[i] = true
+				return
+			}
+		}
+	}
+	return dp[n]
 }
 
 // MARK: - 单词拆分2

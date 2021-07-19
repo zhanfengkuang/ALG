@@ -11,12 +11,17 @@ class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		//回溯 + 动态规划预处理
 	}
 	@IBAction func click(_ sender: Any) {
-		var nums = [2, 4, 5, 0, 0, 0]
-		merge(&nums, 3, [1, 3, 6], 3)
-		print(nums)
+		let s = "apppenapp", wordDict = ["app", "pen"]
+		let result: Bool = wordBreak(s, wordDict)
+		print(result)
+//		let s2 = "aaaaa", wordDict2 = ["aa", "aaa"]
+//		let result2: Bool = wordBreak(s2, wordDict2)
+//		print(result2)
+//		let s3 = "aaaaa", wordDict3 = ["aa"]
+//		let result3: Bool = wordBreak(s3, wordDict3)
+//		print(result3)
 	}
 }
 
