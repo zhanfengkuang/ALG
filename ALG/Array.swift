@@ -108,3 +108,30 @@ func rorate(_ nums: inout [Int], _ k: Int) {
 	reverse(&nums, 0, k - 1)
 	reverse(&nums, k, nums.count - k - 1)
 }
+
+// MARK: - 打乱数组
+/*
+从数组中每次随机取出一个数字，也可以使用这中方式
+先打乱数组，然后从改数组中依次取出
+*/
+class ShuffleSloution {
+	let nums: [Int]
+	
+	init(_ nums: [Int]) {
+		self.nums = nums
+	}
+	
+	func reset() -> [Int] {
+		return nums
+	}
+	
+	func shuffle() -> [Int] {
+		var shuffleArray = nums
+		let count = nums.count
+		// 遍历数组，将改位置的值与随机位置的值交换
+		(0..<count).forEach { index in
+			shuffleArray.swapAt(index, Int.random(in: 0..<count))
+		}
+		return shuffleArray
+	}
+}

@@ -1,20 +1,25 @@
 import UIKit
-let s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
-func wordBreak(_ s: String, _ wordDict: [String]) -> Bool {
-	let words = Set(wordDict)
-	let n = s.count
-	var dp = Array<Bool>(repeating: false, count: n + 1)
-	(0...n).forEach { i in
-		(0..<i).forEach { j in
-			let startIndex = s.index(s.startIndex, offsetBy: j)
-			let endIndex = s.index(s.startIndex, offsetBy: i - 1)
-			let word = s[startIndex...endIndex]
-			if (dp[j] && words.contains(String(word))) {
-				dp[i] = true
-			}
-		}
+class ShuffleSloution {
+	let nums: [Int]
+	
+	init(_ nums: [Int]) {
+		self.nums = nums
 	}
-	return dp[n]
+	
+	func reset() -> [Int] {
+		return nums
+	}
+	
+	func shuffle() -> [Int] {
+		var shuffleArray = nums
+		let count = nums.count
+		(0..<count).forEach { index in
+			shuffleArray.swapAt(index, Int.random(in: 0..<count))
+		}
+		return shuffleArray
+	}
 }
-wordBreak(s, wordDict)
-wordBreak("aaaaa", ["aa", "aaa"])
+
+let shuffle = ShuffleSloution([1, 2, 3, 4, 5])
+print(shuffle.shuffle())
+print(shuffle.reset())
