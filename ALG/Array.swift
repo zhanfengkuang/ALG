@@ -135,3 +135,19 @@ class ShuffleSloution {
 		return shuffleArray
 	}
 }
+
+// MARK: 两个数组交集2
+func intersect(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
+	var map: [Int: Int] = [:]
+	var result: [Int] = []
+	for value in nums1 {
+		map[value] = (map[value] ?? 0) + 1
+	}
+	for value in nums2 {
+		if let count = map[value], count > 0 {
+			result.append(value)
+			map[value] = count - 1
+		}
+	}
+	return []
+}
