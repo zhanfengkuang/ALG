@@ -316,3 +316,168 @@ func reverseString(_ s: inout [Character]) {
 		tail -= 1
 	}
 }
+
+// MARK: - 无重复字符的最长子串
+/*
+输入: s = "abcabcbb"
+输出: 3
+输入: s = "pwwkew"
+输出: 3
+链接：https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/wu-zhong-fu-zi-fu-de-zui-chang-zi-chuan-by-leetc-2/
+*/
+func lengthOfLongestSubstring(_ s: String) -> Int {
+	return 0
+}
+
+// MARK: - 最长回文子串 ✨✨
+/*
+给你一个字符串 s，找到 s 中最长的回文子
+输入：s = "babad"
+输出："bab"
+输入：s = "cbbd"
+输出："bb"
+动态规划
+链接：https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zui-chang-hui-wen-zi-chuan-by-leetcode-solution/
+*/
+func longestPalindrome(_ s: String) -> String {
+	return ""
+}
+
+// MARK: - 整数翻转 ✨
+/*
+给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。
+如果反转后整数超过 32 位的有符号整数的范围 [−231,  231 − 1] ，就返回 0。
+假设环境不允许存储 64 位整数（有符号或无符号）。
+链接：https://leetcode-cn.com/problems/reverse-integer
+输入：x = 123
+输出：321
+*/
+func reverse(_ x: Int) -> Int {
+	return 0
+}
+
+// MARK: - 字符串换整数  ✨ ✨
+/*
+请你来实现一个 myAtoi(string s) 函数，使其能将字符串转换成一个 32 位有符号整数（类似 C/C++ 中的 atoi 函数）。
+
+函数 myAtoi(string s) 的算法如下：
+
+读入字符串并丢弃无用的前导空格
+检查下一个字符（假设还未到字符末尾）为正还是负号，读取该字符（如果有）。 确定最终结果是负数还是正数。 如果两者都不存在，则假定结果为正。
+读入下一个字符，直到到达下一个非数字字符或到达输入的结尾。字符串的其余部分将被忽略。
+将前面步骤读入的这些数字转换为整数（即，"123" -> 123， "0032" -> 32）。如果没有读入数字，则整数为 0 。必要时更改符号（从步骤 2 开始）。
+如果整数数超过 32 位有符号整数范围 [−231,  231 − 1] ，需要截断这个整数，使其保持在这个范围内。具体来说，小于 −231 的整数应该被固定为 −231 ，大于 231 − 1 的整数应该被固定为 231 − 1 。
+返回整数作为最终结果。
+注意：
+
+本题中的空白字符只包括空格字符 ' ' 。
+除前导空格或数字后的其余字符串外，请勿忽略 任何其他字符。
+链接：https://leetcode-cn.com/problems/string-to-integer-atoi
+
+输入：s = "42"
+输出：42
+解释：加粗的字符串为已经读入的字符，插入符号是当前读取的字符。
+第 1 步："42"（当前没有读入字符，因为没有前导空格）
+		 ^
+第 2 步："42"（当前没有读入字符，因为这里不存在 '-' 或者 '+'）
+		 ^
+第 3 步："42"（读入 "42"）
+		   ^
+解析得到整数 42 。
+由于 "42" 在范围 [-231, 231 - 1] 内，最终结果为 42 。
+*/
+func myAtoi(_ s: String) -> Int {
+	return 0
+}
+
+// MARK: - 最长公共前缀  ✨
+/*
+编写一个函数来查找字符串数组中的最长公共前缀。
+如果不存在公共前缀，返回空字符串 ""。
+输入：strs = ["flower","flow","flight"]
+输出："fl"
+示例 2：
+输入：strs = ["dog","racecar","car"]
+输出：""
+解释：输入不存在公共前缀
+链接：https://leetcode-cn.com/problems/longest-common-prefix
+方法一：横向扫描
+*/
+func longestCommonPrefix(_ strs: [String]) -> String {
+	return ""
+}
+
+// MARK: - 有效的括号 ✨
+/*
+给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
+有效字符串需满足：
+左括号必须用相同类型的右括号闭合。
+左括号必须以正确的顺序闭合。
+输入：s = "()"
+输出：true
+输入：s = "()[]{}"
+输出：true
+输入：s = "(]"
+输出：false
+链接：https://leetcode-cn.com/problems/valid-parentheses
+*/
+func isValid(_ s: String) -> Bool {
+	false
+}
+
+// MARK: - 实现 strStr() ✨
+/*
+实现 strStr() 函数。
+给你两个字符串 haystack 和 needle ，请你在 haystack 字符串中找出 needle 字符串出现的第一个位置（下标从 0 开始）。如果不存在，则返回  -1 。
+当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。
+对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与 C 语言的 strstr() 以及 Java 的 indexOf() 定义相符。
+输入：haystack = "hello", needle = "ll"
+输出：2
+输入：haystack = "aaaaa", needle = "bba"
+输出：-1
+链接：https://leetcode-cn.com/problems/implement-strstr
+*/
+func strStr(_ haystack: String, _ needle: String) -> Int {
+0
+	}
+
+// MARK: - 最小覆盖子串 ✨✨✨
+/*
+给你一个字符串 s 、一个字符串 t 。返回 s 中涵盖 t 所有字符的最小子串。如果 s 中不存在涵盖 t 所有字符的子串，则返回空字符串 "" 。
+对于 t 中重复字符，我们寻找的子字符串中该字符数量必须不少于 t 中该字符数量。
+如果 s 中存在这样的子串，我们保证它是唯一的答案。
+输入：s = "ADOBECODEBANC", t = "ABC"
+输出："BANC"
+输入：s = "a", t = "a"
+输出："a"
+输入: s = "a", t = "aa"
+输出: ""
+解释: t 中两个字符 'a' 均应包含在 s 的子串中，
+因此没有符合条件的子字符串，返回空字符串。
+方法一：滑动窗口
+链接：https://leetcode-cn.com/problems/minimum-window-substring
+*/
+func minWindow(_ s: String, _ t: String) -> String {
+""
+	}
+
+// MARK: -  至少有 K 个重复字符的最长子串
+/*
+给你一个字符串 s 和一个整数 k ，请你找出 s 中的最长子串， 要求该子串中的每一字符出现次数都不少于 k 。返回这一子串的长度。
+示例 1：
+
+输入：s = "aaabb", k = 3
+输出：3
+解释：最长子串为 "aaa" ，其中 'a' 重复了 3 次。
+示例 2：
+
+输入：s = "ababbc", k = 2
+输出：5
+解释：最长子串为 "ababb" ，其中 'a' 重复了 2 次， 'b' 重复了 3 次。
+方法一：分治
+方法二：滑动窗口
+链接：https://leetcode-cn.com/problems/longest-substring-with-at-least-k-repeating-characters
+*/
+func longestSubstring(_ s: String, _ k: Int) -> Int {
+0
+	}
