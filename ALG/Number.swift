@@ -459,6 +459,20 @@ func countSmaller(_ nums: [Int]) -> [Int] {
 []
 	}
 
+// MARK: - 最大子序和
+func maxSubArray(_ nums: [Int]) -> Int {
+	// 动态规划 previous：前n-1个数字的最大序列和 maxValue：最大值
+	var previous = 0, maxValue = nums[0]
+	for value in nums {
+		// previous为0..<n 个数字是的最大序列和
+		previous = max(previous + value, previous)
+		// 取出所有0..<n pervious的最大值
+		maxValue = max(previous, maxValue)
+	}
+	return maxValue
+}
+
+
 
 
 
