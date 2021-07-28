@@ -13,7 +13,9 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 	}
 	@IBAction func click(_ sender: Any) {
-		intersect([1, 2, 2, 1], [2, 2])
+		
+		print(threeSum([-1,0,1,2,-1,-4]))
+		print(threeSum([0, 0, 0]))
 	}
 }
 

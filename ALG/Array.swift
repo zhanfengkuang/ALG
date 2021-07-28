@@ -188,8 +188,33 @@ func maxArea(_ height: [Int]) -> Int {
 输出：[]
 链接：https://leetcode-cn.com/problems/3sum
 */
+// [-4, -1, -1, 0, 1, 2]
 func threeSum(_ nums: [Int]) -> [[Int]] {
-return []
+	guard nums.count > 2 else { return [] }
+	var result: [[Int]] = [], first = 0
+	let nums = nums.sorted(), n = nums.count
+	for (index, value) in nums.enumerated() {
+		first = index
+		if first > 0 && value == nums[first - 1] {
+			continue
+		}
+		var second = first + 1, third = n - 1
+		(second..<n).forEach { secondIndex in
+			second = secondIndex
+			while third > second {
+				let sum = value + nums[second] + nums[third]
+				if sum == 0 {
+					result.append([value, nums[second], nums[third]])
+					break
+				} else if sum > 0 {
+					third -= 1
+				} else {
+					break
+				}
+			}
+		}
+	}
+	return result
 }
 
 // MARK: - 电话号码的字母组合 ✨✨
