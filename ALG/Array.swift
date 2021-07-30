@@ -327,7 +327,19 @@ func groupAnagrams(_ strs: [String]) -> [[String]] {
 链接：https://leetcode-cn.com/problems/sort-colors
 */
 func sortColors(_ nums: inout [Int]) {
+	let n = nums.count
+	var front = 0, tail = n - 1
+	(0..<n).forEach { i in
+		while nums[i] == 2 && i <= tail {
+			nums.swapAt(i, tail)
+			tail -= 1
+		}
+		if nums[i] == 0 {
+			nums.swapAt(i, front)
+			front += 1
+		}
 	}
+}
 
 // MARK: - 子集  ✨✨
 /*
@@ -412,7 +424,7 @@ func ladderLength(_ beginWord: String, _ endWord: String, _ wordList: [String]) 
 0
 	}
 
-// MARK: - 最长连续序列
+// MARK: - 最长连续序列  ✨✨
 /*
 给定一个未排序的整数数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。
 请你设计并实现时间复杂度为 O(n) 的算法解决此问题。
@@ -467,7 +479,7 @@ func canCompleteCircuit(_ gas: [Int], _ cost: [Int]) -> Int {
 0
 	}
 
-// MARK: - 直线上最多的点数
+// MARK: - 直线上最多的点数  ✨✨✨
 /*
 给你一个数组 points ，其中 points[i] = [xi, yi] 表示 X-Y 平面上的一个点。求最多有多少个点在同一条直线上。
 输入：points = [[1,1],[2,2],[3,3]]
