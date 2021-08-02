@@ -84,8 +84,16 @@ public class TreeNode {
 链接：https://leetcode-cn.com/problems/binary-tree-inorder-traversal
 */
 func inorderTraversal(_ root: TreeNode?) -> [Int] {
-[]
+	var result: [Int] = [ ]
+	func inorder(_ root: TreeNode?) {
+		guard root != nil else { return }
+		inorder(root?.left)
+		if let val = root?.val { result.append(val) }
+		inorder(root?.right)
 	}
+	inorder(root)
+	return result
+}
 // MARK: - 验证二叉搜索树 ✨
 /*
 给定一个二叉树，判断其是否是一个有效的二叉搜索树。
