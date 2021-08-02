@@ -73,7 +73,7 @@ public class TreeNode {
 	}
 }
 
-// MARK: - 二叉树的中序便利  ✨
+// MARK: - 二叉树的中序遍历  ✨
 /*
 给定一个二叉树的根节点 root ，返回它的 中序 遍历。
 输入：root = [1,null,2,3]
@@ -111,8 +111,15 @@ func inorderTraversal(_ root: TreeNode?) -> [Int] {
 链接：https://leetcode-cn.com/problems/validate-binary-search-tree
 */
 func isValidBST(_ root: TreeNode?) -> Bool {
-false
+	func helper(_ root: TreeNode?, _ lower: Int, _ upder: Int) -> Bool {
+		guard let root = root else { return true }
+		if root.val <= lower || root.val >= upder {
+			return false
+		}
+		return helper(root.left, lower, root.val) && helper(root.right, root.val, upder)
 	}
+	return helper(root, Int.min, Int.max)
+}
 
 // MARK: - 对称二叉树  ✨
 /*
