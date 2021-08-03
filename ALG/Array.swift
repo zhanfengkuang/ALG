@@ -166,7 +166,7 @@ func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
 	return 0
 }
 
-// MARK: - 盛最多水的容器 ✨✨
+// MARK: - 盛最多水的容器 ✨✨ 双指针
 /*
 给你 n 个非负整数 a1，a2，...，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0) 。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
 说明：你不能倾斜容器。
@@ -175,7 +175,18 @@ func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
 输出：1
 */
 func maxArea(_ height: [Int]) -> Int {
-	return 0
+	guard height.count > 1 else { return 0 }
+	var front = 0, tail = height.count - 1
+	var area = (tail - front) * min(height[tail], height[front])
+	while front < tail {
+		area = max(area, (tail - front) * min(height[tail], height[front]))
+		if height[front] <= height[tail] {
+			front += 1
+		} else {
+			tail -= 1
+		}
+	}
+	return area
 }
 
 // MARK: - 三数之和 ✨✨
@@ -896,4 +907,3 @@ class MedianFinder {
 0
 	}
 }
-
