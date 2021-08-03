@@ -13,10 +13,9 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 	}
 	@IBAction func click(_ sender: Any) {
-		
-		print(threeSum([-1,0,1,2,-1,-4]))
-		print(threeSum([0, 0, 0]))
+//		let node2 = createRootNode([1, 2, 2, 3, 4, 4, 3])
 	}
 }
+
 
 

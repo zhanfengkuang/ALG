@@ -139,8 +139,8 @@ func isValidBST(_ root: TreeNode?) -> Bool {
 链接：https://leetcode-cn.com/problems/symmetric-tree
 */
 func isSymmetric(_ root: TreeNode?) -> Bool {
-false
-	}
+	false
+}
 
 // MARK: - 二叉树的层序遍历  ✨✨
 /*
@@ -269,3 +269,30 @@ func kthSmallest(_ root: TreeNode?, _ k: Int) -> Int {
 func lowestCommonAncestor(_ root: TreeNode?, _ p: TreeNode?, _ q: TreeNode?) -> TreeNode? {
 TreeNode()
 	}
+
+// MARK: - 二叉树转数组
+func treeNodeToArray(_ treeNode: TreeNode?) -> [Int?] {
+	func appendTreeNodeValue(_ node: TreeNode?, _ index: Int, _ nums: inout [Int?]) {
+		if node == nil { return }
+		nums[index - 1] = node?.val
+		appendTreeNodeValue(node?.left, index * 2, &nums)
+		appendTreeNodeValue(node?.right, index * 2 + 1, &nums)
+	}
+	var result: [Int?] = Array.init(repeating: nil, count: 100)
+	appendTreeNodeValue(treeNode, 1, &result)
+	return result
+}
+
+// MARK: - 数组转二叉树
+func createRootNode(_ nums: [Int?]) -> TreeNode? {
+	func createTreeNode(_ nums: [Int?], _ index: Int) -> TreeNode? {
+		if index > nums.count { return nil }
+		guard let value = nums[index - 1] else { return nil }
+		let node = TreeNode(value)
+		node.left = createTreeNode(nums, index * 2)
+		node.right = createTreeNode(nums, index * 2 + 1)
+		return node
+	}
+	if nums.isEmpty { return nil }
+	return createTreeNode(nums, 1)
+}
