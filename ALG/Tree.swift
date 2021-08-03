@@ -139,7 +139,12 @@ func isValidBST(_ root: TreeNode?) -> Bool {
 链接：https://leetcode-cn.com/problems/symmetric-tree
 */
 func isSymmetric(_ root: TreeNode?) -> Bool {
-	false
+	func check(_ p: TreeNode?, _ q: TreeNode?) -> Bool {
+		if p == nil && q == nil { return true }
+		if p == nil || q == nil { return false }
+		return p?.val == q?.val && check(p?.left, q?.right) && check(p?.right, q?.left)
+	}
+	return check(root?.left, root?.right)
 }
 
 // MARK: - 二叉树的层序遍历  ✨✨
