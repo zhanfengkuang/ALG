@@ -1,4 +1,3 @@
-
 public class TreeNode {
 	public var val: Int
 	public var left: TreeNode?
@@ -10,17 +9,4 @@ public class TreeNode {
 		self.left = left
 		self.right = right
 	}
-}
-
-func maxArea(_ nums: [Int]) -> Int {
-	var front = 0, tail = nums.count - 1, area = min(nums[front], nums[tail]) * (tail - front)
-	while front < tail {
-		area = max(min(nums[front], nums[tail]) * (tail - front), area)
-		if nums[front] <= nums[tail] {
-			front += 1
-		} else {
-			tail -= 1
-		}
-	}
-	return area
 }
