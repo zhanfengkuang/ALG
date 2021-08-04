@@ -326,7 +326,19 @@ func reverseString(_ s: inout [Character]) {
 链接：https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/wu-zhong-fu-zi-fu-de-zui-chang-zi-chuan-by-leetc-2/
 */
 func lengthOfLongestSubstring(_ s: String) -> Int {
-	return 0
+	if s.isEmpty { return 0 }
+	var set = Set<Character>(), ans = 0, rk = 0
+	(0..<s.count).forEach { index in
+		if index != 0 {
+			set.remove(s[s.index(s.startIndex, offsetBy: index - 1)])
+		}
+		while rk < s.count && !set.contains(s[s.index(s.startIndex, offsetBy: rk)]) {
+			set.insert(s[s.index(s.startIndex, offsetBy: rk)])
+			rk += 1
+		}
+		ans = max(ans, rk - index)
+	}
+	return ans
 }
 
 // MARK: - 最长回文子串 ✨✨

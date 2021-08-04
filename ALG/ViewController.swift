@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 	}
 	@IBAction func click(_ sender: Any) {
-//		let node2 = createRootNode([1, 2, 2, 3, 4, 4, 3])
+		
 	}
 }
 
