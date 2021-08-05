@@ -434,7 +434,20 @@ func longestCommonPrefix(_ strs: [String]) -> String {
 链接：https://leetcode-cn.com/problems/valid-parentheses
 */
 func isValid(_ s: String) -> Bool {
-	false
+	let dic: [Character: Character] = [
+		")": "(",
+		"]": "[",
+		"}": "{",
+	]
+	var arr: [Character] = []
+	for c in s {
+		if let right = dic[c], arr.last == right {
+			arr.removeLast()
+		} else {
+			arr.append(c)
+		}
+	}
+	return arr.isEmpty
 }
 
 // MARK: - 实现 strStr() ✨
@@ -473,7 +486,7 @@ func minWindow(_ s: String, _ t: String) -> String {
 ""
 	}
 
-// MARK: -  至少有 K 个重复字符的最长子串
+// MARK: -  至少有 K 个重复字符的最长子串  ✨✨
 /*
 给你一个字符串 s 和一个整数 k ，请你找出 s 中的最长子串， 要求该子串中的每一字符出现次数都不少于 k 。返回这一子串的长度。
 示例 1：
