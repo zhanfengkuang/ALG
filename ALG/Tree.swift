@@ -206,8 +206,11 @@ func zigzagLevelOrder(_ root: TreeNode?) -> [[Int]] {
 链接：https://leetcode-cn.com/problems/maximum-depth-of-binary-tree
 */
 func maxDepth(_ root: TreeNode?) -> Int {
-0
-	}
+	guard let root = root else { return 0 }
+	let leftDepth = maxDepth(root.left),
+		rightDepth = maxDepth(root.right)
+	return max(leftDepth, rightDepth) + 1
+}
 
 // MARK: -  从前序与中序遍历序列构造二叉树
 /*

@@ -10,3 +10,10 @@ public class TreeNode {
 		self.right = right
 	}
 }
+
+func maxDepth(_ root: TreeNode?) -> Int {
+	guard let root = root else { return 0 }
+	let leftDepth = maxDepth(root.left),
+		rightDepth = maxDepth(root.right)
+	return max(leftDepth, rightDepth) + 1
+}
