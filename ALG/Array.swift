@@ -770,8 +770,19 @@ func kthSmallest(_ matrix: [[Int]], _ k: Int) -> Int {
 链接：https://leetcode-cn.com/problems/increasing-triplet-subsequence
 */
 func increasingTriplet(_ nums: [Int]) -> Bool {
-false
+	guard nums.count > 2 else { return false }
+	var min = Int.max, mid = Int.max
+	for value in nums {
+		if min >= value { // value(包含value)之前的值 将最小值赋值给min
+			min = value
+		} else if mid >= value { // value(包含)之前的值 将第二小值赋值给mid
+			mid = value
+		} else if mid < value {
+			return true
+		}
 	}
+	return false
+}
 
 // MARK: - 矩阵中的最长递增路径
 /*
